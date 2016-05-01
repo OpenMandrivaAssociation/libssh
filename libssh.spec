@@ -7,7 +7,7 @@ Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
 Version:	0.7.3
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
