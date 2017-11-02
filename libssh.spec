@@ -2,17 +2,18 @@
 %define libname %mklibname ssh %{major}
 %define libthreads %mklibname ssh_threads %{major}
 %define devname %mklibname ssh -d
+%global optflags %{optflags} -Wno-gnu-statement-expression
 
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.7.3
+Version:	0.7.5
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
-Source0:	https://red.libssh.org/attachments/download/41/%{name}-%{version}.tar.xz
+Source0:	https://red.libssh.org/attachments/download/218/%{name}-%{version}.tar.xz
 Patch0:		libssh-0.6.3-clang.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -108,6 +109,8 @@ This package contains the development files for %{name}.
 %build
 %cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON
 %make
+# -I/usr/include and -Llib64 are evil
+sed -i -e '/^Cflags:/d' -e 's,-Llib64 ,,' *.pc
 
 %install
 %makeinstall_std -C build
