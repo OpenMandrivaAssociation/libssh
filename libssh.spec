@@ -1,14 +1,13 @@
 %define major 4
 %define libname %mklibname ssh %{major}
-%define libthreads %mklibname ssh_threads %{major}
 %define devname %mklibname ssh -d
 %global optflags %{optflags} -Wno-gnu-statement-expression
 
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.7.5
-Release:	2
+Version:	0.8.2
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
@@ -70,24 +69,10 @@ remote files easily, without third-party programs others than libcrypto
 
 #----------------------------------------------------------------------------
 
-%package -n %{libthreads}
-Summary:	Main library for %{name}
-Group:		System/Libraries
-Conflicts:	%{_lib}ssh4 < 0.5.4-2
-
-%description -n %{libthreads}
-This package contains a shared library for %{name}.
-
-%files -n %{libthreads}
-%{_libdir}/libssh_threads.so.%{major}*
-
-#----------------------------------------------------------------------------
-
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 Requires:	%{libname} = %{EVRD}
-Requires:	%{libthreads} = %{EVRD}
 Provides:	ssh-devel = %{EVRD}
 Provides:	libssh-devel = %{EVRD}
 
@@ -114,4 +99,3 @@ sed -i -e '/^Cflags:/d' -e 's,-Llib64 ,,' *.pc
 
 %install
 %makeinstall_std -C build
-

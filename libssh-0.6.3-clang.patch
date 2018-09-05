@@ -1,11 +1,13 @@
---- libssh-0.6.3/examples/CMakeLists.txt.omv~	2014-08-02 10:08:54.238356092 +0200
-+++ libssh-0.6.3/examples/CMakeLists.txt	2014-08-02 10:09:40.265304029 +0200
-@@ -15,6 +15,8 @@ if (BSD OR SOLARIS OR OSX)
-     find_package(Argp)
- endif (BSD OR SOLARIS OR OSX)
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index 01dbf2d..2913632 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -15,6 +15,8 @@ if (ARGP_INCLUDE_DIR)
+     include_directories(${ARGP_INCLUDE_DIR})
+ endif()
  
 +add_definitions(-Wno-embedded-directive)
 +
  if (UNIX AND NOT WIN32)
      add_executable(libssh_scp libssh_scp.c ${examples_SRCS})
-     target_link_libraries(libssh_scp ${LIBSSH_SHARED_LIBRARY})
+     target_compile_options(libssh_scp PRIVATE ${DEFAULT_C_COMPILE_FLAGS})
