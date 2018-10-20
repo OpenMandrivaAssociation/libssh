@@ -6,13 +6,13 @@
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.8.2
+Version:	0.8.4
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
-Source0:	https://red.libssh.org/attachments/download/218/%{name}-%{version}.tar.xz
+Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libssh-0.6.3-clang.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
