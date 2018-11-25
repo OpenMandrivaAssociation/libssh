@@ -6,15 +6,16 @@
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.8.4
-Release:	2
+Version:	0.8.5
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
 Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libssh-0.6.3-clang.patch
-BuildRequires:	cmake
+Patch1:		libssh-0.8.5-cmake-detection.patch
+BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
 BuildRequires:	pkgconfig(libgcrypt)
@@ -88,14 +89,13 @@ This package contains the development files for %{name}.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
-%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON
-%make
+%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -G Ninja
+%ninja_build
 # -I/usr/include and -Llib64 are evil
 sed -i -e '/^Cflags:/d' -e 's,-Llib64 ,,' *.pc
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
