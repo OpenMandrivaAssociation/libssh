@@ -14,7 +14,6 @@ Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
 Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch0:		libssh-0.6.3-clang.patch
-Patch1:		libssh-0.8.5-cmake-detection.patch
 BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
@@ -92,10 +91,8 @@ This package contains the development files for %{name}.
 %autosetup -p1
 
 %build
-%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -G Ninja
+%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -DLIB_INSTALL_DIR=%{_libdir} -G Ninja
 %ninja_build
-# -I/usr/include and -Llib64 are evil
-sed -i -e '/^Cflags:/d' -e 's,-Llib64 ,,' *.pc
 
 %install
 %ninja_install -C build
