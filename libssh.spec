@@ -6,7 +6,7 @@
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.7.6
+Version:	0.7.7
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
@@ -106,7 +106,7 @@ This package contains the development files for %{name}.
 %apply_patches
 
 %build
-%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON
+%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -DLIB_INSTALL_DIR:PATH=%{_libdir}
 %make
 
 %install
