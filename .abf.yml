@@ -1,4 +1,2 @@
-removed_sources:
-  libssh-0.8.5.tar.xz: b5564774f986e396a7288a593595455bf10d9ce8
 sources:
-  libssh-0.8.6.tar.xz: 2cb2775dcf2780520421a669eebfe5862ba51d29
+  libssh-0.8.7.tar.xz: 29ed6d9517ce270fee993cccb0219bd16a595bcc
