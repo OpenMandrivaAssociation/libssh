@@ -6,7 +6,7 @@
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.8.7
+Version:	0.9.0
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
@@ -18,7 +18,7 @@ BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
 BuildRequires:	pkgconfig(libgcrypt)
-BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(openssl) >= 1.1
 BuildRequires:	pkgconfig(zlib)
 
 %description
