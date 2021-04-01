@@ -1,3 +1,6 @@
+# (tpg) reduce bloat by excluding cmake requires on devel packages
+%global __requires_exclude ^cmake.*$
+
 %define major 4
 %define libname %mklibname ssh %{major}
 %define devname %mklibname ssh -d
@@ -7,7 +10,7 @@ Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
 Version:	0.9.5
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
