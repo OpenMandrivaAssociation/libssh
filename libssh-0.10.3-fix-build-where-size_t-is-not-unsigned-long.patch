@@ -1,0 +1,18 @@
+diff -up libssh-0.10.3/src/libgcrypt.c.omv~ libssh-0.10.3/src/libgcrypt.c
+--- libssh-0.10.3/src/libgcrypt.c.omv~	2023-06-06 20:04:58.953865761 +0200
++++ libssh-0.10.3/src/libgcrypt.c	2023-06-06 20:05:11.469978606 +0200
+@@ -469,12 +469,12 @@ static int des3_set_key(struct ssh_ciphe
+ }
+ 
+ static void des3_encrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_encrypt(cipher->key[0], out, len, in, len);
+ }
+ 
+ static void des3_decrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_decrypt(cipher->key[0], out, len, in, len);
+ }
+ 

@@ -9,14 +9,14 @@
 Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
-Version:	0.10.3
-Release:	2
+Version:	0.10.5
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
 Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Patch0:		libssh-0.6.3-clang.patch
+Patch1:		libssh-0.10.3-fix-build-where-size_t-is-not-unsigned-long.patch
 BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
