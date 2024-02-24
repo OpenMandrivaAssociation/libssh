@@ -21,6 +21,7 @@ Patch2:		libssh-fix_conf_checks.patch
 BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
+BuildRequires:	krb5-devel
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(openssl) >= 1.1
 BuildRequires:	pkgconfig(zlib)
