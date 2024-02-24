@@ -17,6 +17,7 @@ Url:		http://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
 Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch1:		libssh-0.10.3-fix-build-where-size_t-is-not-unsigned-long.patch
+Patch2:		libssh-fix_conf_checks.patch
 BuildRequires:	cmake ninja
 BuildRequires:	doxygen
 BuildRequires:	pcap-devel
