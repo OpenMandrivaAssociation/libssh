@@ -1,0 +1,11 @@
+--- libssh-0.10.6/ConfigureChecks.cmake.orig	2024-02-24 19:47:57.236525031 +0000
++++ libssh-0.10.6/ConfigureChecks.cmake	2024-02-24 19:49:41.688244310 +0000
+@@ -465,7 +465,7 @@
+ ")
+ 
+ set(CMAKE_REQUIRED_FLAGS "-Wl,--version-script=\"${CMAKE_CURRENT_BINARY_DIR}/conftest.map\"")
+-check_c_source_compiles("int main(void) { return 0; }" HAVE_LD_VERSION_SCRIPT)
++check_c_source_compiles("void sym() {}; int main(void) { return 0; }" HAVE_LD_VERSION_SCRIPT)
+ unset(CMAKE_REQUIRED_FLAGS)
+ file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/conftest.map")
+ 
