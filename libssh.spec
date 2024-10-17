@@ -13,7 +13,7 @@ Version:	0.10.6
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
-Url:		http://www.libssh.org
+Url:		https://www.libssh.org
 # svn checkout svn://svn.berlios.de/libssh/trunk libssh
 Source0:	https://www.libssh.org/files/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Patch1:		libssh-0.10.3-fix-build-where-size_t-is-not-unsigned-long.patch
