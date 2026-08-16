@@ -10,7 +10,7 @@ Summary:	C library to authenticate in a simple manner to one or more SSH servers
 Name:		libssh
 Epoch:		1
 Version:	0.12.2
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://www.libssh.org
@@ -94,6 +94,9 @@ This package contains the development files for %{name}.
 
 %prep
 %autosetup -p1
+# libgcrypt >= 1.6 ignores custom thread callbacks; this leftover
+# static is unused and fails with -Werror=unused-variable.
+sed -i -e '/GCRY_THREAD_OPTION_PTHREAD_IMPL/d' src/threads/libgcrypt.c
 
 %build
 %cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -DLIB_INSTALL_DIR=%{_libdir} -G Ninja
